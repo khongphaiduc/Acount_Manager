@@ -66,6 +66,7 @@ public class Main {
                                  System.out.print("Nhập tên tài khoản muốn xóa :");
                                  String removeAccount=duc.nextLine();
                                  obj1.Remove_Account(removeAccount);
+                                 // trường hợp 2 này đang bị lỗi cần  kiểm tra lại .
                                  break;
                              }
                              case 3:{
@@ -114,7 +115,6 @@ public class Main {
 
 
                  }
-
              }
 
         }
