@@ -10,7 +10,7 @@ public class Data_Acount {
 
      public Data_Acount(){
          Account admin1= new Account("duc","1");//account admin
-         Account admin2=new Account("a","1");
+         Account admin2=new Account("phamtrungduc","123456789");
          dataAcount.add(admin1);
          dataAcount.add(admin2);
      }
@@ -23,11 +23,36 @@ public class Data_Acount {
      }
 
      public void Remove_Account(String account1111){
+        boolean mycheck6= true;
          for(int i=0;i<dataAcount.size();i++){
-             if(dataAcount.get(i).getName().equals(account1111)){
-                 dataAcount.remove(i);
+             if(!dataAcount.get(i).getName().equals(account1111)){
+                 System.out.println("(Thông báo)=>Tài khoản không tồn tại.");
+                 mycheck6=false;
+                 break;
+             }else{
+                 break;
              }
          }
+         if(mycheck6){
+             System.out.println("(Thông báo)=>Nhập (1) để xác nhận xóa hoặc (0) để hủy.");
+             int opt=duc.nextInt();
+             if(opt==1){
+
+                 for(int i=dataAcount.size()-1;i>=0;i--){
+                     if(dataAcount.get(i).getName().equals(account1111)){
+                         dataAcount.remove(i);
+                         System.out.println("Xóa thành công .");
+                         break;
+                     }
+
+                 }
+
+             }else if(opt==0){
+                 System.out.println("Đã hủy.");
+
+             }
+         }
+
      }
 
 
@@ -61,7 +86,7 @@ public class Data_Acount {
 
         }
         if(checktaikhoantontai){
-            System.out.println("(System)=>Tài Khoản đã tồn tại .");
+            System.out.println("(Thông báo)=>Tài Khoản đã tồn tại .");
             return ;
         }
       System.out.print("Enter password :");
@@ -76,7 +101,7 @@ public class Data_Acount {
 
         if(!checktaikhoantontai){
             dataAcount.add(t); // add tài khoản vào arraylist.
-            System.out.println("(System)=>Tạo tại khoản thành công ");
+            System.out.println("(Thông báo)=>Tạo tại khoản thành công ");
         }
 
     } catch (IllegalArgumentException e) {
@@ -94,7 +119,7 @@ public boolean SignIn(String name, String password){
   Account t1 = new Account(name,password);
 
   if(dataAcount.contains(t1)){
-    System.out.println("Đăng nhâp thành công ");
+    System.out.println(" -Đăng nhâp thành công- ");
     return  true;
   }else{
     System.out.println("Tên tài khoản hoặc mật khẩu không chính xác.");
@@ -102,6 +127,8 @@ public boolean SignIn(String name, String password){
   }
 
 }
-
-
+// khi sử dụng constain của arraylist thì mặc đỉnh sẽ sử dụng phương thức equals của Object để kiểm tra
+// tất cả các đối tượng có trong list nếu tồn tại thì trả về true
+// phương thức equals được định nghĩa trong lớp ( Object ) nếu không được ghi đè thì Constain sẽ
+// sử dụng phương thức equals mặc đỉnh và chúng chỉ so sánh địa chỉ của các đối tượng
 }

@@ -35,8 +35,11 @@ public String toString(){
         if (obj == null || getClass() != obj.getClass()) return false;  // Kiểm tra nếu đối tượng khác loại
         Account account = (Account) obj; // vì muốn so sánh kiểu Account thì phải ép obj về Account
                                         // để cùng kiểu mới có thể so sánh cách thuộc tính
-        return name.equals(account.name)&&password.equals(account.password);  // So sánh thuộc tính
+        return this.name.equals(account.name)&&this.password.equals(account.password);  // So sánh thuộc tính
     }
+
+
+
 
     @Override
     public int hashCode() {
